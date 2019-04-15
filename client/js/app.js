@@ -3,4 +3,9 @@ const app = new Vue({
 	data: {
 		token: '',
 	},
+	methods: {
+		saveToken(token){
+			this.token = token;
+		},
+	},
 });

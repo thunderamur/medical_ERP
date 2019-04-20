@@ -1,4 +1,5 @@
-<html lang="en"><head>
+<html lang="ru">
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -8,64 +9,57 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-
-	    <!-- Bootstrap core JavaScript
+	<link href="css/main.css" rel="stylesheet">
+	<link href="css/fontawesome.css" rel="stylesheet">
+	<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 	<script type="text/javascript" src="js/locales/bootstrap-datetimepicker.ru.js" charset="UTF-8"></script>
-
   </head>
-
-  <body>
-
+  <body class="d-flex flex-column h-100">
 	<!--header start-->
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-		<h5 class="my-0 mr-md-auto font-weight-normal">Название компании</h5>
-		<a class="btn btn-outline-primary" href="#">Войти</a>
-    </div>
+	<header class="pt-1 hover ">
+		<div class="row mb-1 border-bottom bg-white">
+			<div class="container">
+				<h4 class="my-0 mr-md-auto font-weight-normal">Название компании</h4>		
+			</div>
+		</div>
+		<i class="fas fa-arrow-down float-right mr-5 text-primary"></i>
+	</header>
 	<!--header end-->
 	<!--content start-->
+	<main role="main" class="flex-shrink-0">
 	<div class="row">
 		<div class="container">
-
-			<div class="col-12 col-md-4 offset-md-4">
-				<form>
-					<div class="form-group">
-						<label for="exampleInputEmail1">Имя пользователя</label>
-						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите имя пользователя">
-					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1">Пароль</label>
-						<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Введите пароль">
-					</div>
-					<div class="form-check">
-						<input type="checkbox" class="form-check-input" id="exampleCheck1">
-						<label class="form-check-label" for="exampleCheck1">Запомнить</label>
-					</div>
-					<button type="submit" class="btn btn-primary">Войти</button>
-				</form>
-			</div>
-
-
-
-
-
-
+				<div class="col-12 col-md-4 mx-auto">
+					<form>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Имя пользователя</label>
+							<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите имя пользователя">	
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">Пароль</label>
+							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Введите пароль">
+						</div>
+						<div class="form-check">
+							<input type="checkbox" class="form-check-input" id="exampleCheck1">
+							<label class="form-check-label" for="exampleCheck1">Запомнить</label>
+						</div>
+						<button type="submit" class="btn btn-primary">Войти</button>
+					</form>
 		</div><!--container-->
 	</div><!--row-->
+	</main><!--main-->
 	<!--content end-->
 	<!--footer start-->
-      <footer class="pt-4 my-md-5 pt-md-5 border-top">
-		<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3">
-			<h5 class="my-0 mr-md-auto font-weight-normal">Название компании &COPY; medical_erp 2019</h5>
+	<footer class="footer mt-auto py-3 border-top">
+		<div class="container">
+			<span class="text-muted">Название компании &COPY; medical_erp 2019</span>
 		</div>
-      </footer>
-	 <!--footer end-->
-
-
-
-
-</body></html>
+	</footer>
+	<!--footer end-->
+	</body>
+</html>

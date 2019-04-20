@@ -22,13 +22,14 @@ do
     fi
     case "$CHOICE" in
         "help" )
-                echo "0 - Make all operations"
+                echo "0 - Make all operations up to 6"
                 echo "1 - Drop DB"
                 echo "2 - Create DB"
                 echo "3 - Remove migrations"
                 echo "4 - Make migrations"
                 echo "5 - Apply migrations"
                 echo "6 - Fill DB"
+                echo "7 - Dump DB"
                 echo "Any other key to exit"
         ;;
         0 )
@@ -37,8 +38,8 @@ do
             utils/remove_migrations.sh
             python3 manage.py makemigrations
             python3 manage.py migrate
-            python3 manage.py fill_db
             python3 manage.py loaddata dump.json
+            python3 manage.py fill_db
             break
         ;;
         1 ) utils/postgres_db_drop.sh;;
@@ -47,9 +48,10 @@ do
         4 ) python3 manage.py makemigrations;;
         5 ) python3 manage.py migrate;;
         6 )
-            python3 manage.py fill_db
             python3 manage.py loaddata dump.json
+            python3 manage.py fill_db
         ;;
+        7 ) python3 manage.py dumpdata -e=contenttypes -e=authtoken.token -o dump.json;;
         * ) break;;
     esac
     if [ -n "$1" ]; then

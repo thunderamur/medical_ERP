@@ -28,7 +28,7 @@ do
                 echo "3 - Remove migrations"
                 echo "4 - Make migrations"
                 echo "5 - Apply migrations"
-#                echo "6 - Fill DB"
+                echo "6 - Fill DB"
                 echo "Any other key to exit"
         ;;
         0 )
@@ -37,8 +37,8 @@ do
             utils/remove_migrations.sh
             python3 manage.py makemigrations
             python3 manage.py migrate
-#            python3 manage.py fill_db
-#            python3 manage.py loaddata dump.json
+            python3 manage.py fill_db
+            python3 manage.py loaddata dump.json
             break
         ;;
         1 ) utils/postgres_db_drop.sh;;
@@ -46,10 +46,10 @@ do
         3 ) utils/remove_migrations.sh;;
         4 ) python3 manage.py makemigrations;;
         5 ) python3 manage.py migrate;;
-#        6 )
-#            python3 manage.py fill_db
-#            python3 manage.py loaddata dump.json
-#        ;;
+        6 )
+            python3 manage.py fill_db
+            python3 manage.py loaddata dump.json
+        ;;
         * ) break;;
     esac
     if [ -n "$1" ]; then

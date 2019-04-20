@@ -25,7 +25,7 @@ SECRET_KEY = ')e0-qpk=3*vm!r1%0j7d&*w$*=xj--hqy5%mkakl!243+9@c)d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['minnigaliev-r1.fvds.ru']
 
 
 # Application definition

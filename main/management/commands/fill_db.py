@@ -13,4 +13,4 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         doctors = mixer.cycle(2).blend(User)
         patients = mixer.cycle(3).blend(User)
-        mixer.cycle(10).blend(Record, doctor=random.choice(doctors), patient=random.choice(patients))
+        mixer.cycle(10).blend(Record, doctor=lambda: random.choice(doctors), patient=lambda: random.choice(patients))

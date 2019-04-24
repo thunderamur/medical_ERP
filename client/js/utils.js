@@ -1,3 +1,5 @@
+'use strict';
+
 function resultJson(data){
 	return data
 		.then(result => result.json())

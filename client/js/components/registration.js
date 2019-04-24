@@ -1,3 +1,5 @@
+'use strict';
+
 Vue.component('registration', {
 	// data() {
 	// 	return {

@@ -7,35 +7,41 @@
     <link rel="icon" href="favicon.ico">
     <title>medical_erp</title>
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="vendor/fontawesome/css/fontawesome.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
-	<link href="css/fontawesome.css" rel="stylesheet">
 	<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-	<script type="text/javascript" src="js/locales/bootstrap-datetimepicker.ru.js" charset="UTF-8"></script>
+    <script src="vendor/jquery/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   </head>
+
   <body class="d-flex flex-column h-100">
+	
 	<!--header start-->
-	<header class="pt-1 hover ">
-		<div class="row mb-1 border-bottom bg-white">
+	<header class=" hover ">
+		<div class="row bg-white border-bottom">
 			<div class="container">
-				<h4 class="my-0 mr-md-auto font-weight-normal">Название компании</h4>		
+				<h4 class="my-0 mr-md-auto font-weight-normal float-left">Название компании</h4>
+				<nav class="float-right">
+					<ol class="breadcrumb-med">
+						<li class="breadcrumb-item"><a href="#">Главная</a></li>
+						<li class="breadcrumb-item active" aria-current="page">Регистрация</li>
+					</ol>
+				</nav>
+				<div class="clearfix"></div>
 			</div>
+			
 		</div>
 		<i class="fas fa-arrow-down float-right mr-5 text-primary"></i>
 	</header>
 	<!--header end-->
 	<!--content start-->
 	<main role="main" class="flex-shrink-0">
-	<div class="row">
-		<div class="container">
-				<div class="col-12 col-md-4 mx-auto">
-					<form>
+	<div class="row h-100 mt-3">
+		<div class="col-12 col-md-4 mx-auto align-self-center">
+					<form class="">
 						<div class="form-group">
 							<label for="exampleInputEmail1">Имя пользователя</label>
 							<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите имя пользователя">	
@@ -50,16 +56,16 @@
 						</div>
 						<button type="submit" class="btn btn-primary">Войти</button>
 					</form>
-		</div><!--container-->
+		</div>
 	</div><!--row-->
 	</main><!--main-->
 	<!--content end-->
 	<!--footer start-->
-	<footer class="footer mt-auto py-3 border-top">
+    <footer class="footer mt-auto py-3 border-top">
 		<div class="container">
 			<span class="text-muted">Название компании &COPY; medical_erp 2019</span>
 		</div>
 	</footer>
-	<!--footer end-->
+	 <!--footer end-->
 	</body>
 </html>

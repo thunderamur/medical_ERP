@@ -32,7 +32,7 @@
 				<nav class="float-right">
 					<ol class="breadcrumb-med">
 						<li class="breadcrumb-item"><a href="#">Главная</a></li>
-						<li class="breadcrumb-item active" aria-current="page">Дневное расписание</li>
+						<li class="breadcrumb-item active" aria-current="page">Недельное расписание</li>
 					</ol>
 				</nav>
 				<div class="clearfix"></div>
@@ -260,12 +260,6 @@
 				
 				<div class="col-12 col-md-10 ">
 					<div class="w-100">
-						<button type="button" class="btn btn-primary ">Понедельник</button>
-						<button type="button" class="btn btn-secondary ">Вторник</button>
-						<button type="button" class="btn btn-secondary ">Среда</button>
-						<button type="button" class="btn btn-secondary ">Четверг</button>
-						<button type="button" class="btn btn-secondary ">Пятница</button>
-						<button type="button" class="btn btn-secondary ">Суббота</button>
 						<button type="button" class="btn btn-warning btn-lg float-right" data-toggle="modal" data-target="#entry"><i class="fas fa-plus-circle"></i> Запись</button>
 						
 						<div class="modal fade" id="entry" tabindex="-1" role="dialog" aria-labelledby="entry" aria-hidden="true">
@@ -389,17 +383,17 @@
 					</div><!--buttons-->
 					<br/>
 					<div class="table-responsive">
-					<table class="table table-bordered table-hover timetable">
+					<table class="table table-bordered table-hover timetable_week">
+					<caption>Врач 1</caption>
 						<thead>
 							<tr>
-								<th scope="col" class="time">Время<br/><small class="text-muted">&nbsp;</small></th>
-      							<th scope="col" class="doctor"><a href="#" title="" alt="">Врач 1 <br/><small class="text-muted">Терапевт</small></a></th>
-      							<th scope="col" class="doctor"><a href="#" title="" alt="">Врач 2<br/><small class="text-muted">Терапевт</small></a></th>
-      							<th scope="col" class="doctor"><a href="#" title="" alt="">Врач 3<br/><small class="text-muted">Ортопед</small></a></th>
-								<th scope="col" class="doctor"><a href="#" title="" alt="">Врач 4<br/><small class="text-muted">Ортопед</small></a></th>
-								<th scope="col" class="doctor"><a href="#" title="" alt="">Врач 5<br/><small class="text-muted">Хирург</small></a></th>
-								<th scope="col" class="time">Время<br/><small class="text-muted">&nbsp;</small></th>
-								
+								<th scope="col" class="time">Время</th>
+      							<th scope="col" class="doctor"><a href="index_day.html" alt="" title="">Понедельник</a></th>
+      							<th scope="col" class="doctor"><a href="#" alt="" title="">Вторник</a></th>
+      							<th scope="col" class="doctor"><a href="#" alt="" title="">Среда</a></th>
+								<th scope="col" class="doctor"><a href="#" alt="" title="">Четверг</a></th>
+								<th scope="col" class="doctor"><a href="#" alt="" title="">Пятница</a></th>
+      							<th scope="col" class="doctor"><a href="#" alt="" title="">Суббота</a></th>
     						</tr>
   						</thead>
   						<tbody>
@@ -419,7 +413,7 @@
 										</div>
 									</div></td>
 								<td></td>
-								<th scope="row">09:00</th>
+								<td></td>
           					</tr>
 							<tr>
 								<th scope="row">09:30</th>
@@ -428,7 +422,7 @@
 								<td></td>
             					<td></td>
 								<td></td>
-								<th scope="row">09:30</th>
+								<td></td>
           					</tr>
 							<tr>
 								<th scope="row">10:00</th>
@@ -443,7 +437,7 @@
             					<td></td>
             					<td></td>
 								<td></td>
-								<th scope="row">10:00</th>
+								<td></td>
           					</tr>
 							<tr>
 								<th scope="row">10:30</th>
@@ -465,7 +459,7 @@
 											<h5 class="m-0">ФИО 2</h5>
 										</div>
 									</div></td>
-								<th scope="row">11:00</th>
+								<td></td>
           					</tr>
 							<tr>
 								<th scope="row">11:30</th>
@@ -474,7 +468,7 @@
 								<td></td>
             					<td></td>
 								<td></td>
-								<th scope="row">11:30</th>
+								<td></td>
           					</tr>
 							<tr>
 								<th scope="row">12:00</th>
@@ -487,7 +481,7 @@
 									</div></td>
             					<td></td>
 								<td></td>
-								<th scope="row">12:00</th>
+								<td></td>
           					</tr>
 							<tr>
 								<th scope="row">12:30</th>
@@ -496,7 +490,7 @@
 								<td></td>
             					<td></td>
 								<td></td>
-								<th scope="row">12:30</th>
+								<td></td>
           					</tr>
 							<tr>
 								<th scope="row">13:00</th>
@@ -510,7 +504,7 @@
             					<td></td>
 								<td></td>
 								<td></td>
-								<th scope="row">13:00</th>
+								<td></td>
           					</tr>
 							<tr>
 								<th scope="row">13:30</th>
@@ -519,7 +513,7 @@
 								<td></td>
             					<td></td>
 								<td></td>
-								<th scope="row">13:30</th>
+								<td></td>
           					</tr>
 							<tr>
 								<th scope="row">14:00</th>
@@ -532,7 +526,7 @@
 										</div>
 									</div></td>
 								<td></td>
-								<th scope="row">14:00</th>
+								<td></td>
           					</tr>
 							<tr>
 								<th scope="row">14:30</th>
@@ -541,7 +535,7 @@
 								<td></td>
             					<td></td>
 								<td></td>
-								<th scope="row">14:30</th>
+								<td></td>
           					</tr>
 							<tr>
 								<th scope="row">15:00</th>
@@ -562,7 +556,7 @@
 										</div>
 									</div></td>
 								<td></td>
-								<th scope="row">15:00</th>
+								<td></td>
           					</tr>
 							<tr>
 								<th scope="row">15:30</th>
@@ -571,7 +565,7 @@
 								<td></td>
             					<td></td>
 								<td></td>
-								<th scope="row">15:30</th>
+								<td></td>
           					</tr>
 							<tr>
 								<th scope="row">16:00</th>
@@ -594,7 +588,7 @@
 											<h5 class="m-0">ФИО 15</h5>
 										</div>
 									</div></td>
-								<th scope="row">16:00</th>
+								<td></td>
           					</tr>
 							<tr>
 								<th scope="row">16:30</th>
@@ -603,7 +597,7 @@
 								<td></td>
             					<td></td>
 								<td></td>
-								<th scope="row">16:30</th>
+								<td></td>
           					</tr>
 							<tr>
 								<th scope="row">17:00</th>
@@ -620,7 +614,7 @@
 									</div></td>
             					<td></td>
 								<td></td>
-								<th scope="row">17:00</th>
+								<td></td>
           					</tr>
 							<tr>
 								<th scope="row">17:30</th>
@@ -637,7 +631,7 @@
 										</div>
 									</div></td>
 								<td></td>
-								<th scope="row">17:30</th>
+								<td></td>
           					</tr>
     					</tbody>
   					</table>

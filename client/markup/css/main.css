@@ -1,8 +1,11 @@
+body{
+	overflow-x:hidden;
+}
 .hover{
-position: relative;
+position: absolute;
 top: -2.8rem;
-transition: top 1s linear;
-z-index:9999;
+width:100%;
+z-index:9999999;
 }
 .hover:hover{
  top: 0px;
@@ -34,6 +37,7 @@ font-size:12px;
 }
 table.timetable td{
 position: relative;
+padding:0 !important;
 }
 table.timetable .time{
 width:10%;
@@ -47,10 +51,15 @@ caption-side: top;
 }
 table.timetable_week td{
 position: relative;
+padding:0 !important;
 }
 table.timetable_week .time{
 width:10%;
 }
 table.timetable_week .doctor{
 width:12.8%;
+}
+.item-card{
+	position: absolute; 
+	top:0px;
 }

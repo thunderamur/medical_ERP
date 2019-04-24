@@ -1,3 +1,5 @@
+'use strict';
+
 const API = 'http://127.0.0.1:8000/api-token-auth/'
 
 Vue.component('login', {

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../vendor/bootstrap/4.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="vendor/fontawesome/css/fontawesome.css">
+
+    <title>Веб-клиент</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <!-- Vendor JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../vendor/jquery/jquery-3.4.0.slim.min.js"></script>
+    <script src="../vendor/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <!-- Vue.js -->
+    <script src="../vendor/vue/vue.js"></script>
+		<!-- Production version
+    <script src="/client/vendor/vue/dist/vue.js" integrity="sha384-f2df9a2e5b945679f948f3c6fcd6de6421fa4d622f697226fe00dbbad46fb44784973c7159a64df86fd9204748fdffb2" crossorigin="anonymous"></script>
+		-->
+		<script src="../vendor/moment/moment.min.js"></script>
+		<script src="../vendor/moment/ru.js"></script>
+
+		<script src="../js/utils.js"></script>
+    <script src="calendar.js"></script>
+		<script>
+			'use strict';
+
+			const app = new Vue({
+				el: '#app',
+				template: `
+					<calendar></calendar>
+				`,
+			});
+		</script>
+  </body>
+</html>

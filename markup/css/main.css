@@ -78,3 +78,7 @@ table.timetable_week .doctor {
   position: absolute;
   top: 0px;
 }
+
+.pointer {
+	cursor: pointer;
+}

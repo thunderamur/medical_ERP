@@ -3,7 +3,7 @@ from mixer.backend.django import mixer
 from django.contrib.auth import get_user_model
 import random
 
-from main.models import Record
+from main.models import Record, Staff, Patient
 
 
 User = get_user_model()
@@ -11,6 +11,6 @@ User = get_user_model()
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        doctors = mixer.cycle(2).blend(User)
-        patients = mixer.cycle(3).blend(User)
+        doctors = mixer.cycle(2).blend(Staff)
+        patients = mixer.cycle(3).blend(Patient)
         mixer.cycle(10).blend(Record, doctor=lambda: random.choice(doctors), patient=lambda: random.choice(patients))

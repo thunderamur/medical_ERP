@@ -20,7 +20,6 @@ Vue.component('calendar', {
 
 			let month = current.month();
 			let year = current.year();
-
 			let firstDayCurrMonth = moment([year, month, 1]);
 			let weekDay = firstDayCurrMonth.weekday();
 			let firstDayCalendar = firstDayCurrMonth.subtract(weekDay, 'days');

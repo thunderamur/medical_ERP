@@ -17,11 +17,14 @@ class Passport(CreatedUpdated):
     series = models.CharField('Серия', max_length=10)
     number = models.CharField('Номер', max_length=10)
     state_granted = models.CharField('Кем выдан', max_length=50)
-    when_granted = models.DateTimeField('Когда выдан')
+    when_granted = models.DateField('Когда выдан')
 
     class Meta:
         verbose_name = 'Паспорт'
         verbose_name_plural = 'Паспорта'
+
+    def __str__(self):
+        return '{series} {number}'.format(series=self.series, number=self.number)
 
 
 class Person(models.Model):
@@ -42,7 +45,10 @@ class Person(models.Model):
         return '{} {} {}'.format(self.name, self.surname, self.patronymic)
 
     def get_short_name(self):
-        return '{} {}.{}.'.format(self.name, self.surname[:1], self.patronymic[:1])
+        return '{} {}.{}.'.format(self.surname, self.name[:1], self.patronymic[:1])
+
+    def __str__(self):
+        return self.get_short_name()
 
 
 class Post(CreatedUpdated):
@@ -52,6 +58,9 @@ class Post(CreatedUpdated):
         verbose_name = 'Должность'
         verbose_name_plural = 'Должности'
 
+    def __str__(self):
+        return self.name
+
 
 class Staff(Person, CreatedUpdated):
     post = models.ForeignKey(Post, verbose_name='Должность', on_delete=models.PROTECT)
@@ -60,6 +69,9 @@ class Staff(Person, CreatedUpdated):
     class Meta:
         verbose_name = 'Сотрудник'
         verbose_name_plural = 'Сотрудники'
+
+    def __str__(self):
+        return '{post} {short_name}'.format(post=self.post, short_name=self.get_short_name())
 
 
 class Patient(Person, CreatedUpdated):
@@ -76,6 +88,9 @@ class Service(CreatedUpdated):
         verbose_name = 'Услуга'
         verbose_name_plural = 'Услуги'
         ordering = ['name']
+
+    def __str__(self):
+        return self.name
 
 
 class Record(CreatedUpdated):

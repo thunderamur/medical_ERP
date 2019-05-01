@@ -4,8 +4,8 @@ const app = new Vue({
 	el: '#app',
 	data: {
 		token: '',
-		loginPage: true,
-		registrationPage: false,
+		loginPage: false,
+		registrationPage: true,
 	},
 	methods: {
 		saveToken(token){

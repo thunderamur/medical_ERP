@@ -12,9 +12,7 @@ Vue.component('calendar', {
 	},
 	methods: {
 		getCalendar(current=moment()){
-			current.locale('ru');
-
-			this.current = current;
+			this.currentMonth = current;
 			this.month = current.format('MMMM');
 			this.year = current.format('YYYY');
 
@@ -45,17 +43,21 @@ Vue.component('calendar', {
 			this.calendar = calendar;
 		},
 		nextMonth(){
-			this.getCalendar(this.current.add(1, 'month'));
+			this.getCalendar(this.currentMonth.add(1, 'month'));
 		},
 		prevMonth(){
-			this.getCalendar(this.current.subtract(1, 'month'));
+			this.getCalendar(this.currentMonth.subtract(1, 'month'));
 		},
 		showDay(dateStr){
-			this.currentDate = moment(dateStr);
-		}
+			this.$root.$emit('dateChanged', moment(dateStr));
+		},
+		changeDate(date){
+			this.currentDate = date;
+		},
 	},
 	mounted() {
 		this.getCalendar();
+		this.$root.$on('dateChanged', this.changeDate);
 	},
 	template: `
 		<table class="table table-borderless table-sm text-center">

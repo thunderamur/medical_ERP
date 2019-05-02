@@ -21,14 +21,7 @@ Vue.component('registration', {
 					</div>
 
 					<div class="col-12 col-md-10 ">
-						<span class="btn-group">
-							<button type="button" class="btn btn-primary ">Понедельник</button>
-							<button type="button" class="btn btn-secondary ">Вторник</button>
-							<button type="button" class="btn btn-secondary ">Среда</button>
-							<button type="button" class="btn btn-secondary ">Четверг</button>
-							<button type="button" class="btn btn-secondary ">Пятница</button>
-							<button type="button" class="btn btn-secondary ">Суббота</button>
-						</span>
+						<week-days></week-days>
 
 						<button type="button" class="btn btn-warning ml-3" data-toggle="modal" data-target="#record"><i class="fas fa-plus-circle"></i> Запись</button>
 						<record></record>

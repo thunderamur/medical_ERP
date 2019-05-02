@@ -27,15 +27,30 @@ class Passport(CreatedUpdated):
         return '{series} {number}'.format(series=self.series, number=self.number)
 
 
+class PersonManager(models.Manager):
+    def create(self, *args, **kwargs):
+        username = '{}{}{}'.format(kwargs['surname'].capitalize(),
+                                    kwargs['name'][:1].capitalize(),
+                                    kwargs['patronymic'][:1].capitalize())
+        user = User.objects.filter(username=username)[:1]
+        if user:
+            user = user[0]
+        else:
+            user = User.objects.create_user(username)
+        return super(PersonManager, self).create(user=user, *args, **kwargs)
+
+
 class Person(models.Model):
     user = models.OneToOneField(get_user_model(), verbose_name='Пользователь', on_delete=models.CASCADE)
     passport = models.OneToOneField(Passport, verbose_name='Паспорт', on_delete=models.SET_NULL, null=True)
     name = models.CharField('Имя', max_length=30)
     surname = models.CharField('Фамилия', max_length=30)
     patronymic = models.CharField('Отчество', max_length=30)
-    birth_day = models.DateTimeField('Дата рождения')
-    mobile_phone = models.CharField('Мобильный телефон', max_length=20)
-    address = models.CharField('Адрес', max_length=50)
+    birth_day = models.DateTimeField('Дата рождения', null=True)
+    mobile_phone = models.CharField('Мобильный телефон', max_length=20, null=True)
+    address = models.CharField('Адрес', max_length=50, null=True)
+
+    objects = PersonManager()
 
     class Meta:
         abstract = True

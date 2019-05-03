@@ -6,16 +6,26 @@ function resultJson(data){
 		.catch(error => console.log(error));
 }
 
-function postJson(url, data){
-	return resultJson(fetch(url, {
-		method: 'post',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(data),
-	}));
-}
+function postJson(url, data, method, token=false){
+	let headers = {
+		'Content-Type': 'application/json',
+	};
+	if (token && token > '') {
+		headers['Authorization'] = 'Token ' + token;
+	}
 
-function getJson(url){
-	return resultJson(fetch(url));
+	let request = {
+		method: method,
+		headers: headers,
+	}
+
+	if (method === 'POST') {
+		request['body'] = JSON.stringify(data);
+	}
+
+	return resultJson(fetch(url, request));
 }
+//
+// function getJson(url){
+// 	return resultJson(fetch(url));
+// }

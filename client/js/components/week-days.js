@@ -34,7 +34,7 @@ Vue.component('week-days', {
 			}
 		},
 	},
-	mounted() {
+	mounted(){
 		this.createWeek();
 		this.$root.$on('dateChanged', this.changeDate);
 	},

@@ -55,7 +55,7 @@ Vue.component('calendar', {
 			this.currentDate = date;
 		},
 	},
-	mounted() {
+	mounted(){
 		this.getCalendar();
 		this.$root.$on('dateChanged', this.changeDate);
 	},

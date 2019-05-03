@@ -1,6 +1,37 @@
 'use strict';
 
 Vue.component('schedule-table', {
+	data() {
+		return {
+			currentDate: moment(),
+			api: {
+				'records': this.$root.api.url + 'api/v1/records/',
+			},
+			weekDay: 0,
+			week: [],
+		}
+	},
+	methods: {
+		changeDate(date) {
+			this.currentDate = date;
+			// this.createWeek();
+		},
+		showTable(){
+			postJson(
+				this.api.records,
+				{},
+				this.$root.api.method.get,
+				this.$cookies.get('token'),
+			)
+			.then(data => {
+				console.log(data);
+			});
+		},
+	},
+	mounted() {
+		this.$root.$on('dateChanged', this.changeDate);
+		this.showTable();
+	},
 	template: `
 		<table class="table table-bordered table-hover timetable">
 			<thead>

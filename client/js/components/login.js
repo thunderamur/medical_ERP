@@ -1,10 +1,9 @@
 'use strict';
 
-const API = 'http://127.0.0.1:8000/api-token-auth/'
-
 Vue.component('login', {
 	data() {
 		return {
+			authUrl: this.$root.api.url + 'api-token-auth/',
 			username: '',
 			password: '',
 		}
@@ -12,11 +11,13 @@ Vue.component('login', {
 	methods: {
 		submit(){
 			postJson(
-				API,
+				this.authUrl,
 				{"username":this.username,"password":this.password},
+				this.$root.api.method.post,
 			)
 			.then(data => {
-				this.$emit('receive-token', data.token);
+				this.$cookies.set('token', data.token);
+				this.$root.$emit('authenticated');
 			});
 		}
 	},

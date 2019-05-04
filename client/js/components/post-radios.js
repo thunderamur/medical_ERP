@@ -1,5 +1,6 @@
 'use strict';
 
+
 Vue.component('post-radios', {
 	template: `
 		<div>

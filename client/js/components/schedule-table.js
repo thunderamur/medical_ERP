@@ -1,30 +1,33 @@
 'use strict';
 
+
 Vue.component('schedule-table', {
 	data() {
 		return {
 			currentDate: moment(),
-			api: {
-				'records': this.$root.api.url + 'records/',
+			urls: {
+				'records': 'records/',
 			},
-			weekDay: 0,
-			week: [],
 		}
 	},
 	methods: {
 		changeDate(date) {
 			this.currentDate = date;
-			// this.createWeek();
 		},
 		showTable(){
-			postJson(
-				this.api.records,
+			this.$api.request(
+				this.urls.records,
+				'get',
 				{},
-				this.$root.api.method.get,
 				this.$cookies.get('token'),
 			)
 			.then(data => {
-				console.log(data);
+				this.$root.$emit('checkStatus');
+				if(data){
+					for (let record of data) {
+						console.log(record.doctor.post);
+					}
+				}
 			});
 		},
 	},

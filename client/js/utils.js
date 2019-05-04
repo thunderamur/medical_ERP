@@ -1,35 +1,54 @@
 'use strict';
 
-// class Api {
-//
-// }
 
-function resultJson(data){
-	return data
-		.then(result => result.json())
-		.catch(error => console.log(error));
+const API_URL = 'http://127.0.0.1:8000/api/v1/';
+
+
+class Api {
+	constructor(apiUrl) {
+		this.apiUrl = apiUrl;
+		this.status = '';
+		this.methods = {
+			'get': 'GET',
+			'post': 'POST',
+		};
+		this.errors = {
+			'UnknownMethod': 'Запрошен неизвестный метод!',
+		}
+	}
+
+	_resultJson(data){
+		return data
+			.then(result => {
+				this.status = result.status;
+				return result.json()
+			})
+			.catch(error => console.log(error));
+	}
+
+	request(url, method, data, token=false){
+		if (!this.methods.hasOwnProperty(method)) {
+			throw this.errors.UnknownMethod;
+		}
+		method = this.methods[method];
+
+		const headers = {};
+		headers['Content-Type'] = 'application/json';
+		if (token && token > '') {
+			headers['Authorization'] = 'Token ' + token;
+		}
+
+		const request = {};
+		request['method'] = method;
+		request['headers'] = headers;
+
+		if (method === this.methods.post) {
+			request['body'] = JSON.stringify(data);
+		}
+
+		return this._resultJson(fetch(this.apiUrl + url, request));
+	}
 }
 
-function postJson(url, data, method, token=false){
-	let headers = {
-		'Content-Type': 'application/json',
-	};
-	if (token && token > '') {
-		headers['Authorization'] = 'Token ' + token;
-	}
 
-	let request = {
-		method: method,
-		headers: headers,
-	}
-
-	if (method === 'POST') {
-		request['body'] = JSON.stringify(data);
-	}
-
-	return resultJson(fetch(url, request));
-}
-//
-// function getJson(url){
-// 	return resultJson(fetch(url));
-// }
+Vue.prototype.$api = new Api(API_URL)

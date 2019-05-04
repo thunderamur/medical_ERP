@@ -1,30 +1,34 @@
 'use strict';
 
+
 const app = new Vue({
 	el: '#app',
 	data: {
-		api: {
-			'url': 'http://127.0.0.1:8000/api/v1/',
-			'method': {
-				'get': 'GET',
-				'post': 'POST',
-			},
-		},
 		loginPage: true,
 		registrationPage: false,
 	},
 	methods: {
-		showPage(){
+		login(){
 			this.loginPage = false;
 			this.registrationPage = true;
 		},
+		logout(){
+			this.$cookies.remove('token');
+			this.loginPage = true;
+			this.registrationPage = false;
+		},
+		checkStatus(){
+			if (this.$api.status > 400) this.logout();
+		}
 	},
 	mounted(){
 		let token = this.$cookies.get('token');
 		if(typeof(token) !== undefined && token > ''){
-			this.showPage();
+			this.login();
 		}
-		this.$root.$on('authenticated', this.showPage);
+		this.$root.$on('login', this.login);
+		this.$root.$on('logout', this.logout);
+		this.$root.$on('checkStatus', this.checkStatus);
 	},
 	template: `
 		<div>

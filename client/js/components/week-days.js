@@ -1,5 +1,6 @@
 'use strict';
 
+
 Vue.component('week-days', {
 	data() {
 		return {

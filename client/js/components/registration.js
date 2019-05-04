@@ -1,5 +1,6 @@
 'use strict';
 
+
 Vue.component('registration', {
 	template: `
 		<div class="px-4">

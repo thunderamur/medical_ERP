@@ -1,5 +1,6 @@
 'use strict';
 
+
 Vue.component('record', {
 	template: `
 		<!--modal window-->

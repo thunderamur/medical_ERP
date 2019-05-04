@@ -1,5 +1,6 @@
 'use strict';
 
+
 Vue.component('calendar', {
 	data() {
 		return {

@@ -1,23 +1,29 @@
 'use strict';
 
+
 Vue.component('login', {
 	data() {
 		return {
-			authUrl: this.$root.api.url + 'api-token-auth/',
+			url: 'token-auth/',
 			username: '',
 			password: '',
+			error: '',
 		}
 	},
 	methods: {
 		submit(){
-			postJson(
-				this.authUrl,
-				{"username":this.username,"password":this.password},
-				this.$root.api.method.post,
+			this.$api.request(
+				this.url,
+				'post',
+				{'username' : this.username, 'password' : this.password},
 			)
 			.then(data => {
-				this.$cookies.set('token', data.token);
-				this.$root.$emit('authenticated');
+				if (data.token) {
+					this.$cookies.set('token', data.token);
+					this.$root.$emit('login');
+				} else {
+					this.error = 'Неверное имя пользователя или пароль!'
+				}
 			});
 		}
 	},
@@ -36,6 +42,9 @@ Vue.component('login', {
 				<label class="form-check-label" for="CheckRememberLogin">Запомнить</label>
 			</div>
 			<button class="btn btn-primary btn-lg my-3 w-100" @click="submit()">Войти</button>
+			<div v-if="error" class="alert alert-danger" role="alert">
+			  {{error}}
+			</div>
 		</div>
 		`,
 });

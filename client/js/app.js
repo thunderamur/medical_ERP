@@ -4,7 +4,7 @@ const app = new Vue({
 	el: '#app',
 	data: {
 		api: {
-			'url': 'http://127.0.0.1:8000/',
+			'url': 'http://127.0.0.1:8000/api/v1/',
 			'method': {
 				'get': 'GET',
 				'post': 'POST',

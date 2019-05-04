@@ -1,5 +1,9 @@
 'use strict';
 
+// class Api {
+//
+// }
+
 function resultJson(data){
 	return data
 		.then(result => result.json())

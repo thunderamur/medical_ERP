@@ -5,7 +5,7 @@ Vue.component('schedule-table', {
 		return {
 			currentDate: moment(),
 			api: {
-				'records': this.$root.api.url + 'api/v1/records/',
+				'records': this.$root.api.url + 'records/',
 			},
 			weekDay: 0,
 			week: [],

@@ -13,10 +13,11 @@ Vue.component('schedule-table', {
 	methods: {
 		changeDate(date) {
 			this.currentDate = date;
+			this.showTable();
 		},
 		showTable(){
 			this.$api.request(
-				this.urls.records,
+				this.urls.records + this.currentDate.format('YYYY-MM-DD') + '/day/',
 				'get',
 				{},
 				this.$cookies.get('token'),

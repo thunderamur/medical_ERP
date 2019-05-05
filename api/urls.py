@@ -8,6 +8,7 @@ from .views import UserViewSet, GroupViewSet, RecordViewSet
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'groups', GroupViewSet)
+router.register(r'records/(?P<date>[0-9]{4}-[0-9]{2}-[0-9]{2})', RecordViewSet)
 router.register(r'records', RecordViewSet)
 
 urlpatterns = [

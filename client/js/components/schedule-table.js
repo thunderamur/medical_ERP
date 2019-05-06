@@ -5,9 +5,8 @@ Vue.component('schedule-table', {
 	data() {
 		return {
 			currentDate: moment(),
-			urls: {
-				'records': 'records/',
-			},
+			doctors: [],
+			doctorPostIds: [],
 		}
 	},
 	methods: {
@@ -15,25 +14,43 @@ Vue.component('schedule-table', {
 			this.currentDate = date;
 			this.showTable();
 		},
-		showTable(){
-			this.$api.request(
-				this.urls.records + this.currentDate.format('YYYY-MM-DD') + '/day/',
-				'get',
-				{},
+
+		changePost(doctorPostIds) {
+			this.doctorPostIds = doctorPostIds;
+		},
+
+		getDoctors() {
+			this.$api.get(
+				'staffs/',
 				this.$cookies.get('token'),
 			)
 			.then(data => {
-				this.$root.$emit('checkStatus');
-				if(data){
-					for (let record of data) {
-						console.log(record.doctor.post);
+				this.$root.checkStatus();
+				for (let staff of data) {
+					if (this.doctorPostIds.indexOf(staff.post.id) != -1) {
+						this.doctors.push(staff);
 					}
 				}
+				console.log(this.doctors);
 			});
 		},
+
+		showTable(){
+			this.getDoctors();
+			this.$api.get(
+				'records/' + this.currentDate.format('YYYY-MM-DD') + '/day/',
+				this.$cookies.get('token'),
+			)
+			.then(data => {
+				this.$root.checkStatus();
+				console.log(data);
+			});
+		},
+
 	},
-	mounted() {
+	created() {
 		this.$root.$on('dateChanged', this.changeDate);
+		this.$root.$on('postChanged', this.changePost);
 		this.showTable();
 	},
 	template: `

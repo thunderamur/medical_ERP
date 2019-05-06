@@ -6,6 +6,7 @@ const app = new Vue({
 	data: {
 		loginPage: true,
 		registrationPage: false,
+		posts: [],
 	},
 	methods: {
 		login(){
@@ -18,7 +19,7 @@ const app = new Vue({
 			this.registrationPage = false;
 		},
 		checkStatus(){
-			if (this.$api.status > 400) this.logout();
+			if (this.$api.status >= 400) this.logout();
 		}
 	},
 	mounted(){
@@ -28,7 +29,6 @@ const app = new Vue({
 		}
 		this.$root.$on('login', this.login);
 		this.$root.$on('logout', this.logout);
-		this.$root.$on('checkStatus', this.checkStatus);
 	},
 	template: `
 		<div>

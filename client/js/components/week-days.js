@@ -20,7 +20,7 @@ Vue.component('week-days', {
 		createWeek(){
 			this.weekDay = this.currentDate.weekday();
 			let firstDayWeek = moment(this.currentDate).subtract(
-				this.currentDate.weekday(), 'days'
+				this.weekDay, 'days'
 			);
 			let new_day = firstDayWeek;
 			this.week = [];
@@ -35,7 +35,7 @@ Vue.component('week-days', {
 			}
 		},
 	},
-	mounted(){
+	created(){
 		this.createWeek();
 		this.$root.$on('dateChanged', this.changeDate);
 	},

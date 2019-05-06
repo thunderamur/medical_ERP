@@ -21,9 +21,12 @@ class Api {
 		return data
 			.then(result => {
 				this.status = result.status;
-				return result.json()
+				return result.json();
 			})
-			.catch(error => console.log(error));
+			.catch(error => {
+				console.log(error);
+				return {'error': error};
+			});
 	}
 
 	request(url, method, data, token=false){
@@ -48,6 +51,18 @@ class Api {
 
 		return this._resultJson(fetch(this.apiUrl + url, request));
 	}
+
+	get(url, token=false){
+		const method = 'get';
+		const data = {};
+		return this.request(url, method, data, token);
+	}
+
+	post(url, data, token=false){
+		const method = 'post';
+		return this.request(url, method, data, token);
+	}
+
 }
 
 

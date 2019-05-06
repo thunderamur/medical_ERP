@@ -12,9 +12,8 @@ Vue.component('login', {
 	},
 	methods: {
 		submit(){
-			this.$api.request(
+			this.$api.post(
 				this.url,
-				'post',
 				{'username' : this.username, 'password' : this.password},
 			)
 			.then(data => {
@@ -22,7 +21,11 @@ Vue.component('login', {
 					this.$cookies.set('token', data.token);
 					this.$root.$emit('login');
 				} else {
-					this.error = 'Неверное имя пользователя или пароль!'
+					if (data.error) {
+						this.error = data.error;
+					} else {
+						this.error = 'Неверное имя пользователя или пароль!';
+					}
 				}
 			});
 		}

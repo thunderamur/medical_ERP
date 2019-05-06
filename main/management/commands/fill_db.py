@@ -32,22 +32,25 @@ PATRONYMICS = [
     'Поликарпович',
 ]
 
-POSTS = [
+DOCTORS = [
     'Терапевт',
     'Ортопед',
     'Хирург',
 ]
 
+doc_gen = (doc for doc in DOCTORS)
+DOC_POSTS = mixer.cycle(len(DOCTORS)).blend(Post, name=doc_gen, is_doctor=True)
+
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        doctors = mixer.cycle(2).blend(Staff,
+        doctors = mixer.cycle(3).blend(Staff,
                                        name=lambda: random.choice(NAMES),
                                        surname=lambda: random.choice(SURNAMES),
                                        patronymic=lambda: random.choice(PATRONYMICS),
-                                       post=lambda: mixer.blend(Post, name=random.choice(POSTS)),
+                                       post=lambda: random.choice(DOC_POSTS),
                                        )
-        patients = mixer.cycle(3).blend(Patient,
+        patients = mixer.cycle(5).blend(Patient,
                                         name=lambda: random.choice(NAMES),
                                         surname=lambda: random.choice(SURNAMES),
                                         patronymic=lambda: random.choice(PATRONYMICS),
@@ -58,3 +61,10 @@ class Command(BaseCommand):
                               patient=lambda: random.choice(patients),
                               date=datetime.datetime.now(),
                               )
+
+        mixer.cycle(3).blend(Staff,
+                             name=lambda: random.choice(NAMES),
+                             surname=lambda: random.choice(SURNAMES),
+                             patronymic=lambda: random.choice(PATRONYMICS),
+                             post=mixer.blend(Post, name='Ассистент'),
+                             )

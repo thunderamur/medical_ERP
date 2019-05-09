@@ -24,7 +24,7 @@ class RecordViewSet(viewsets.ModelViewSet):
     @action(detail=False)
     def day(self, request, *args, **kwargs):
         date = kwargs.get('date', None)
-        self.queryset = Record.objects.filter(date=date)
+        self.queryset = Record.objects.filter(date=date).order_by('time_start')
         return super(RecordViewSet, self).list(request, *args, **kwargs)
 
 

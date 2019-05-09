@@ -19,7 +19,12 @@ const app = new Vue({
 			this.registrationPage = false;
 		},
 		checkStatus(){
-			if (this.$api.status >= 400) this.logout();
+			if (this.$api.status >= 400) {
+				this.logout();
+				return false;
+			} else {
+				return true;
+			}
 		}
 	},
 	mounted(){

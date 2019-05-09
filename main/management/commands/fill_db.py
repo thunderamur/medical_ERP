@@ -1,8 +1,8 @@
 from django.core.management.base import BaseCommand
 from mixer.backend.django import mixer
 from django.contrib.auth import get_user_model
+from datetime import datetime, timedelta
 import random
-import datetime
 
 from main.models import Record, Staff, Patient, Post
 
@@ -41,6 +41,12 @@ DOCTORS = [
 doc_gen = (doc for doc in DOCTORS)
 DOC_POSTS = mixer.cycle(len(DOCTORS)).blend(Post, name=doc_gen, is_doctor=True)
 
+today = datetime.now().strftime('%Y-%m-%d')
+today = datetime.strptime(today, '%Y-%m-%d')
+day_start = today + timedelta(hours=9)
+start = [day_start + timedelta(hours=i) for i in range(7)]
+finish_delta = [timedelta(minutes=30), timedelta(minutes=45), timedelta(hours=1), timedelta(hours=2)]
+
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
@@ -56,11 +62,16 @@ class Command(BaseCommand):
                                         patronymic=lambda: random.choice(PATRONYMICS),
                                         )
 
-        mixer.cycle(10).blend(Record,
-                              doctor=lambda: random.choice(doctors),
-                              patient=lambda: random.choice(patients),
-                              date=datetime.datetime.now(),
-                              )
+        for _ in range(10):
+            time_start = random.choice(start)
+            time_finish = time_start + random.choice(finish_delta)
+            mixer.blend(Record,
+                        doctor=lambda: random.choice(doctors),
+                        patient=lambda: random.choice(patients),
+                        date=today,
+                        time_start=time_start,
+                        time_finish=time_finish,
+                        )
 
         mixer.cycle(3).blend(Staff,
                              name=lambda: random.choice(NAMES),

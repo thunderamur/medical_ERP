@@ -25,6 +25,8 @@ Vue.component('post-radios', {
 		},
 
 		getDoctorPosts() {
+			if (this.$root.posts.length === 0) return
+
 			for (let post of this.$root.posts) {
 				if (post.is_doctor) {
 					this.doctorPosts.push(post);
@@ -34,6 +36,7 @@ Vue.component('post-radios', {
 			this.$root.$emit('postChanged', this.doctorPostIds);
 		},
 
+	 	// Click handler for postRadios
 		postChanged(postId) {
 			let doctorPostIds = [postId];
 			if (postId === 0) doctorPostIds = this.doctorPostIds;

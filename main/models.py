@@ -68,6 +68,7 @@ class Person(models.Model):
 
 class Post(CreatedUpdated):
     name = models.CharField('Имя', max_length=30)
+    is_doctor = models.BooleanField('Врач', default=False)
 
     class Meta:
         verbose_name = 'Должность'

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Try 'utils/reset.sh' to run.
-# 'utils/reset.sh OPTION[0..6]' to run with preselected option and exit.
+# 'utils/reset.sh OPTION[0..8]' to run with preselected option and exit.
 
 if [[ $0 != "utils/reset.sh" ]]; then
     echo "Try 'utils/reset.sh'"
@@ -22,7 +22,7 @@ do
     fi
     case "$CHOICE" in
         "help" )
-                echo "0 - Make all operations up to 6"
+                echo "0 - 1-6"
                 echo "1 - Drop DB"
                 echo "2 - Create DB"
                 echo "3 - Remove migrations"
@@ -30,6 +30,7 @@ do
                 echo "5 - Apply migrations"
                 echo "6 - Fill DB"
                 echo "7 - Dump DB"
+                echo "8 - 1256"
                 echo "Any other key to exit"
         ;;
         0 )
@@ -52,6 +53,14 @@ do
             python3 manage.py fill_db
         ;;
         7 ) python3 manage.py dumpdata -e=contenttypes -e=authtoken.token -o dump.json;;
+        8 )
+            utils/postgres_db_drop.sh
+            utils/postgres_db_create.sh
+            python3 manage.py migrate
+            python3 manage.py loaddata dump.json
+            python3 manage.py fill_db
+            break
+        ;;
         * ) break;;
     esac
     if [ -n "$1" ]; then

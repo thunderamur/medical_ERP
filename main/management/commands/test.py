@@ -1,9 +1,7 @@
 from django.core.management.base import BaseCommand
-from mixer.backend.django import mixer
 from django.contrib.auth import get_user_model
-import random
 
-from main.models import Record, Staff, Patient
+from main.models import Patient
 
 
 User = get_user_model()

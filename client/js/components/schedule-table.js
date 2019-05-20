@@ -91,6 +91,7 @@ Vue.component('schedule-table', {
 							this.doctors.push(staff);
 						}
 					}
+					this.getRecords();
 				}
 			});
 		},
@@ -120,7 +121,6 @@ Vue.component('schedule-table', {
 		this.$root.$on('dateChanged', this.changeDate);
 		this.$root.$on('postChanged', this.changePost);
 		this.getDoctors();
-		this.getRecords();
 	},
 	template: `
 		<table class="table table-bordered table-hover timetable">
